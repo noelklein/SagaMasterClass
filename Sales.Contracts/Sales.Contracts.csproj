@@ -48,6 +48,7 @@
     <Compile Include="IOrderCommand.cs" />
     <Compile Include="OrderAbandoned.cs" />
     <Compile Include="OrderCancelled.cs" />
+    <Compile Include="OrderPlaced.cs" />
     <Compile Include="OrderStarted.cs" />
     <Compile Include="PlaceOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

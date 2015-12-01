@@ -17,6 +17,11 @@ namespace Sales
             this.Data.OrderValue = message.OrderValue;
             this.Data.OrderPlaced = true;
 
+            this.Bus.Publish<OrderAccepted>(x =>
+            {
+                x.OrderId = this.Data.OrderId;
+            });
+
             Console.WriteLine("Order Placed: " + message.OrderId);
         }
 
@@ -59,7 +64,7 @@ namespace Sales
 
         protected override void ConfigureHowToFindSaga(SagaPropertyMapper<OrderData> mapper)
         {
-            // missing StartOrder mapping
+            mapper.ConfigureMapping<StartOrder>(m => m.OrderId).ToSaga(s => s.OrderId);
             mapper.ConfigureMapping<CancelOrder>(m => m.OrderId).ToSaga(s => s.OrderId);
             mapper.ConfigureMapping<PlaceOrder>(m => m.OrderId).ToSaga(s => s.OrderId);
         }
