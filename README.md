@@ -1,4 +1,5 @@
 # SagaMasterClass
+<<<<<<< HEAD
 Sample app and material for the Saga Master class for NSBCON 2015
 
 
@@ -8,3 +9,5 @@ Sample app and material for the Saga Master class for NSBCON 2015
    - LocalDB, please execute either `Install.LocalDB.x64.ps1` or `Install.LocalDB.x86.ps1` (requires internet connection)
    - If you need Sql Management studio plese execute either `Install.ManagementStudio.x64.ps1` or  `Install.ManagementStudio.x86.ps1` (requires internet connection)
 * MSMQ enabled
+=======
+>>>>>>> 311b20850077ff83ed8a1593194a887dc433c464
