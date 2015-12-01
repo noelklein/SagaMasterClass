@@ -44,8 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FedExTimeoutResponse.cs" />
+    <Compile Include="PendingShipment.cs" />
+    <Compile Include="ShipmentFailed.cs" />
+    <Compile Include="CarrierAcceptedShipment.cs" />
+    <Compile Include="ShipToFedEx.cs" />
+    <Compile Include="OrderShipped.cs" />
     <Compile Include="OrderReadyForShipment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShipToUPS.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace Shipping
 {
-    class ShippingHandler : IHandleMessages<OrderReadyForShipment>
+    public class FedExOrderShipped : IMessage
     {
-        public void Handle(OrderReadyForShipment message)
+        public string OrderId { get; set; }
+
+        public FedExOrderShipped(string OrderId)
         {
-            Console.WriteLine("Shipping Order: " + message.OrderId);
+            this.OrderId = OrderId;
         }
     }
 }

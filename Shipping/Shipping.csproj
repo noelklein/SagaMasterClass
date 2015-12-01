@@ -46,6 +46,10 @@
       <HintPath>..\packages\NServiceBus.5.2.10\lib\net45\NServiceBus.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NServiceBus.Gateway, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NServiceBus.Gateway.1.0.1\lib\net45\NServiceBus.Gateway.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NServiceBus.NHibernate, Version=6.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
       <HintPath>..\packages\NServiceBus.NHibernate.6.2.5\lib\net45\NServiceBus.NHibernate.dll</HintPath>
       <Private>True</Private>
@@ -57,10 +61,11 @@
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ShippingData.cs" />
     <Compile Include="FedEx.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="ShippingData.cs" />
-    <Compile Include="ShippingHandler.cs" />
+    <Compile Include="DispatcherData.cs" />
+    <Compile Include="DispatcherSaga.cs" />
     <Compile Include="ShippingSaga.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -18,6 +18,8 @@ namespace Ups.Gateway
 
             busConfiguration.EnableInstallers();
 
+            //busConfiguration.EnableFeature<NServiceBus.Features.Gateway>();
+
             using (var bus = Bus.Create(busConfiguration))
             {
                 bus.Start();

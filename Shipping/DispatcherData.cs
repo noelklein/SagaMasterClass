@@ -2,7 +2,7 @@
 
 namespace Shipping
 {
-    public class ShippingData : ContainSagaData
+    public class DispatcherData : ContainSagaData
     {
         [Unique]
         public virtual string OrderId { get; set; }
