@@ -61,11 +61,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Messages\CancelOrder.cs" />
-    <Compile Include="Messages\IOrderCommand.cs" />
-    <Compile Include="Messages\PlaceOrder.cs" />
-    <Compile Include="Messages\StartOrder.cs" />
+    <Compile Include="OrderData.cs" />
+    <Compile Include="OrderExpiredTimeout.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="SalesSaga.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

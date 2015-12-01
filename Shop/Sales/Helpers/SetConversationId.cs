@@ -1,9 +1,9 @@
 ﻿namespace Sales.Helpers
 {
-    using Messages;
     using NServiceBus;
     using NServiceBus.MessageMutator;
     using NServiceBus.Unicast.Messages;
+    using Contracts;
 
     class SetConversationId : IMutateOutgoingTransportMessages, INeedInitialization
     {

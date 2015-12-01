@@ -1,8 +1,8 @@
 namespace Sales
 {
     using System;
-    using Messages;
     using Shop;
+    using Contracts;
 
     class PlaceOrderCommand : Command
     {

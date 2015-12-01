@@ -1,0 +1,6 @@
+﻿namespace Sales
+{
+    class OrderExpiredTimeout
+    {
+    }
+}

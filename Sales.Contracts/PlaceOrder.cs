@@ -1,8 +1,8 @@
-namespace Sales.Messages
+namespace Sales.Contracts
 {
     using System;
 
-    class PlaceOrder : IOrderCommand
+    public class PlaceOrder : IOrderCommand
     {
         public string CustomerId { get; set; }
         public double OrderValue { get; set; }
