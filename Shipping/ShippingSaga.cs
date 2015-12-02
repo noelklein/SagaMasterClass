@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Shipping
 {
-    class ShippingSaga : Saga<ShippingData>, IAmStartedByMessages<OrderBilled>, IAmStartedByMessages<OrderAccepted>, IHandleMessages<CarrierAcceptedShipment>, IHandleSagaNotFound
+    class ShippingSaga : Saga<ShippingData>, IAmStartedByMessages<OrderBilled>, IAmStartedByMessages<OrderAccepted>, IHandleMessages<CarrierAcceptedShipment>
     {
         public void Handle(OrderAccepted message)
         {
@@ -31,6 +31,7 @@ namespace Shipping
         {
             if(Data.OrderBilled && Data.OrderAccepted)
             {
+                Console.WriteLine("Order Accepted and Billed");
                 Bus.Publish<OrderReadyForShipment>(x => {
                     x.OrderId = Data.OrderId;
                 });
@@ -47,10 +48,7 @@ namespace Shipping
         public void Handle(CarrierAcceptedShipment message)
         {
             Console.WriteLine("Shipment Succeeded");
-        }
-
-        public void Handle(object message)
-        {
+            MarkAsComplete();
         }
     }
 }

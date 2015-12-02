@@ -12,9 +12,11 @@ namespace FedEx.Gateway
 {
     class UPSShippingHandler : IHandleMessages<ShipToUPS>
     {
+        public IBus Bus { get; set; }
+
         public void Handle(ShipToUPS message)
         {
-            Console.WriteLine("Shipping with UPS: " + message.OrderId);
+            Console.WriteLine("sent shipping request to UPS");
         }
     }
 }

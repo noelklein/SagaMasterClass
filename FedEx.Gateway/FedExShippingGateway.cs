@@ -17,11 +17,18 @@ namespace FedEx.Gateway
 
         public void Handle(ShipToFedEx message)
         {
-            var request = WebRequest.Create("http://localhost:8888/fedex/shipit");
-            var response = request.GetResponse();
-            Console.WriteLine("send shipping request to fedex");
+            try
+            {
+                var request = WebRequest.Create("http://localhost:8888/fedex/shipit");
+                var response = request.GetResponse();
+                Console.WriteLine("sent shipping request to fedex");
 
-            Bus.Reply(new FedExOrderShipped(message.OrderId));
+                Bus.Reply(new FedExOrderShipped(message.OrderId));
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("FedEx service timed out");
+            }
         }
     }
 }

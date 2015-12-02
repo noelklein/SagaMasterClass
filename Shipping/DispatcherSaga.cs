@@ -11,23 +11,19 @@ using System.Threading.Tasks;
 
 namespace Shipping
 {
-    class DispatcherSaga : Saga<DispatcherData>, IAmStartedByMessages<OrderReadyForShipment>, IHandleMessages<FedExOrderShipped>, IHandleTimeouts<FedExTimeoutResponse>, IHandleSagaNotFound
+    class DispatcherSaga : Saga<DispatcherData>, IAmStartedByMessages<OrderReadyForShipment>, IHandleMessages<FedExOrderShipped>, IHandleTimeouts<FedExTimeoutResponse>
     {
         public void Handle(FedExOrderShipped message)
         {
-            var response = new CarrierAcceptedShipment();
-            response.OrderId = message.OrderId;
-            ReplyToOriginator(response);
+            Console.WriteLine("FedEx accepted shipment");
+
+            ReplyToOriginator(new CarrierAcceptedShipment());
             MarkAsComplete();
-        }
-
-        public void Handle(object message)
-        {
-
         }
 
         public void Handle(OrderReadyForShipment message)
         {
+            Console.WriteLine("Sending order to shipper");
             Data.OrderId = message.OrderId;
 
             Bus.Publish<ShipToFedEx>(x =>
@@ -40,12 +36,14 @@ namespace Shipping
 
         public void Timeout(FedExTimeoutResponse timeoutResponse)
         {
-            ReplyToOriginator(new ShipmentFailed());
+            Console.WriteLine("FedEx timed out, Attempting to send with UPS...");
+            Bus.Publish<ShipToUPS>(x =>
+            {
+                x.OrderId = Data.OrderId;
+            });
 
-            //Bus.Send<ShipToUPS>(x =>
-            //{
-            //    x.OrderId = Data.OrderId;
-            //});
+            ReplyToOriginator(new CarrierAcceptedShipment());
+            MarkAsComplete();
         }
 
         protected override void ConfigureHowToFindSaga(SagaPropertyMapper<DispatcherData> mapper)
